@@ -1,0 +1,7 @@
+com\opinion\connect\OpinionDBConnection.class
+com\opinion\controller\OpinionResource.class
+com\opinion\dao\OpinionDao.class
+com\opinion\entity\Opinion_Poll.class
+com\opinion\entity\Author.class
+com\opinion\dao\OpinionDaoInterface.class
+com\opinion\controller\OpinionService.class

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../../../favicon.ico">
+
+<title>Opinion_Poll</title>
+
+<!-- Bootstrap core CSS -->
+<link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+	<script src="./jquery/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var api_url = 'http://localhost:8080/opinion/rest/poll'
+			$.ajax({
+				url : api_url,
+				context : document.body,
+				success : function(data) {
+
+					var json = JSON.parse(data);
+
+					$("#label_id1").append(json[0].author_Name);
+					$("#label_id2").append(json[1].author_Name);
+					$("#label_id3").append(json[2].author_Name);
+					$("#label_id4").append(json[3].author_Name);
+
+					$("#gridRadios1").val(json[0].author_Id);
+					$("#gridRadios2").val(json[1].author_Id);
+					$("#gridRadios3").val(json[2].author_Id);
+					$("#gridRadios4").val(json[3].author_Id);
+
+				}
+			});
+
+		});
+	</script>
+
+
+	<form class="form-signin" action="./rest/poll/select">
+		<h1 class="h3 font-weight-normal">Who is your favourite author?</h1>
+		<br> <br>
+		<fieldset class="form-group">
+
+			<div class="row">
+
+				<div class="col">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="choice"
+							id="gridRadios1" value="" checked> <label id="label_id1"
+							class="form-check-label" for="gridRadios1"> </label>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="choice"
+							id="gridRadios2" value=""> <label id="label_id2"
+							class="form-check-label" for="gridRadios2" id="label_id2">
+						</label>
+					</div>
+				</div>
+				<div class="w-100"></div>
+				<div class="col">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="choice"
+							id="gridRadios3" value=""> <label id="label_id3"
+							class="form-check-label" for="gridRadios3"> </label>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="choice"
+							id="gridRadios4" value=""> <label id="label_id4"
+							class="form-check-label" for="gridRadios4"> </label>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+
+	</form>
+
+</body>
+</html>
